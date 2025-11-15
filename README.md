@@ -1,0 +1,1 @@
+9 Chances is a game of chance. The 9 slots are shuffled each time you play, with 3 of the 9 slots being red and 6 being green. For each green slot you choose, you win 1.2 times your bet. If you click on a red slot, the game ends and your entire bet goes to the bank.
