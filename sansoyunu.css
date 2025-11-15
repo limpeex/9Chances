@@ -1,0 +1,70 @@
+.rowheight {
+    height: 80px;
+}
+
+.rowheight2 {
+    height: 50px;
+}
+
+/* 1. ANA KAPSAYICIYI DARALTMA VE ORTALAMA */
+.game-board-wrapper {
+    /* Sihir burada! Elementin genişliğini sadece içerik kadar yapar. */
+    width: fit-content;
+    transform: scale(1.2);
+    margin-bottom: 150px;
+
+    background-color: rgb(12, 16, 40);
+
+    border: 1px solid;
+    border-radius: 15px;
+    /*
+    .mx-auto (margin-left: auto; margin-right: auto) ile
+    ana kapsayıcıyı sayfada yatayda ortalar.
+    */
+}
+
+/* 2. BUTONLARI KARE YAPMA */
+/* Butonlara sabit bir genişlik ve yükseklik veririz. */
+.btn-square {
+    width: 60px; /* İstediğiniz boyuta ayarlayın */
+    height: 60px; /* İstediğiniz boyuta ayarlayın */
+}
+
+
+.btn-width-reset {
+    width: 55%;
+}
+
+.btn-width-submit {
+    width: 35%;
+}
+
+.bodyheight  {
+    height: 100%;
+}
+
+.body  {
+    min-height: 100vh;
+    background-color: rgb(47, 47, 47);
+}
+
+.h3 {
+    color: white;
+}
+
+.firsth3border {
+    border-width: 20px;
+}
+
+.descdiv {
+    width: 600px;
+    color: white;
+    background-color: rgb(12, 16, 40);
+    border: 1px, solid,rgb(12, 16, 40);
+    border-radius: 15px;
+    padding-block: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-inline: 50px;
+    margin-bottom: 250px;
+}
