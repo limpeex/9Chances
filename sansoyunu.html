@@ -18,7 +18,7 @@
 
             <div>
                 <div class="row d-flex justify-content-center text-center mb-3">
-                    <h3 class="h3 border-bottom pb-3 firsth3border">OYUNA HOŞGELDİNİZ</h3>
+                    <h3 class="h3 border-bottom pb-3 firsth3border">WELCOME TO THE GAME</h3>
                 </div>
 
                 <!-- Mesela burada row'un genişliği containere sığmak zorunda olduğu için 3 tane butonu ayrı ayrı ortalıyorum ancak sağ ve solda boşluk kalıyor dolayısıyla containere border koyunca o boşluklar kötü gözüküyor.-->
@@ -42,15 +42,17 @@
                 </div>
 
                 <div class="d-flex justify-content-center rowheight2">
-                    <button id="baslamaButonu"  class="btn btn-success border-dark btn-width-submit ms-3 me-1 mb-2">Başla</button>
-                    <button id="bitirmeButonu" class="btn  btn-danger border-dark btn-width-reset ms-1 me-3 mb-2">Bitir</button>
+                    <button id="startButton"
+                        class="btn btn-success border-dark btn-width-submit ms-3 me-1 mb-2">Start</button>
+                    <button id="endButton"
+                        class="btn  btn-danger border-dark btn-width-reset ms-1 me-3 mb-2">End</button>
                 </div>
 
                 <div class="d-flex justify-content-center border-bottom mb-3">
-                    <h3 class="h3  mt-2">Bakiye: <span id="bakiye">2000</span>$</h3>
+                    <h3 class="h3  mt-2">Currency: <span id="currentCurrency">2000</span>$</h3>
                 </div>
                 <div class="input-group">
-                    <input id="bahisDegeri" type="text" class="form-control"
+                    <input id="betValue" type="text" class="form-control"
                         aria-label="Dollar amount (with dot and two decimal places)">
                     <span class="input-group-text">$</span>
                 </div>
@@ -66,13 +68,17 @@
     </div>
 
     <div class="descdiv">
-        <p>Oyuna hoşgeldiniz. Bu oyun bir şans oyunudur. Öncelikle aşağı taraftan basmak istediğiniz para miktarını
-            seçiniz.
-            Daha sonra bu para miktarı ile başla butonuna tıklayın. Butona tıkladığınızda ekrandaki butonlara erişiminiz
-            bulunacaktır. 9 butondan
-            sadece yeşil olanları seçmeniz gerekmekte. Yeşil olarak seçtiğiniz her bir buton başına, bastığınız paranın
-            1.2 katını kazanacaksınız.
-            Ancak eğer ki bir kırmızı butona tıklarsanız bütün bastığınız para kasaya düşecektir. Bol şans....
+        <p>Welcome to the game. This is a game of chance. First, select the amount of money you want to bet below.
+
+            Then, click the "Start with this amount" button. Clicking the button will give you access to the buttons on
+            the screen. Of the nine buttons, you must select only the green ones. For each green button you select, you
+            will win 1.2 times the amount you bet.
+
+            However, if you click a red button, all the money you bet will be transferred to the cash register.
+
+            You can end the game whenever you want after you start.
+            Good
+            luck.
         </p>
     </div>
     <!-- Burada container oluşturuyorum bu container çok geniş oluyor. içindeki elementler de (row) containere sığmak zorunda olduğu için yanlarda çok boşluk oluyor. -->
@@ -82,7 +88,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-        <script src="sansoyunu.js"></script>
+    <script src="sansoyunu.js"></script>
 </body>
 
 </html>
