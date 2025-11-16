@@ -1,63 +1,63 @@
-const baslamaButonu = document.querySelector("#baslamaButonu");
-const bitirmeButonu = document.querySelector("#bitirmeButonu");
-const anlikBakiyeSpan = document.querySelector("#bakiye");
-let bahisDegeri = document.querySelector("#bahisDegeri");
-let baslayabilir = true;
-const butonListesi = new Array();
-let anlikBakiyeInt = parseInt(anlikBakiyeSpan.innerText);
-let anlikPara = anlikBakiyeInt;
-let deneme = 1;
-let bittiMi = false;
+const startButton = document.querySelector("#startButton");
+const endButton = document.querySelector("#endButton");
+const currentCurrencySpan = document.querySelector("#currentCurrency");
+let betValueSpan = document.querySelector("#betValue");
+let canStart = true;
+const buttonList = new Array();
+let currentCurrencyInt = parseInt(currentCurrencySpan.innerText);
+let currentCurrency = currentCurrencyInt;
+let tries = 1;
+let hasEnded = false;
 
 
 for (let i = 0; i < 9; i++) {
-    butonListesi[i] = document.querySelector(`#button${i + 1}`);
+    buttonList[i] = document.querySelector(`#button${i + 1}`);
 }
 
-const diziKopya = [...butonListesi];
+const arrayCopy = [...buttonList];
 
 for (let i = 0; i < 9; i++) {
-    butonListesi[i].addEventListener("click", butonTikla);
+    buttonList[i].addEventListener("click", clickToButton);
 }
 
 
-function rastgeleIndex(dizi) {
-    for (let i = butonListesi.length - 1; i > 0; i--) {
+function randomIndex(array) {
+    for (let i = buttonList.length - 1; i > 0; i--) {
         let j = Math.floor(Math.random() * (i + 1));
-        let k = diziKopya[i];
-        diziKopya[i] = diziKopya[j];
-        diziKopya[j] = k;
+        let k = arrayCopy[i];
+        arrayCopy[i] = arrayCopy[j];
+        arrayCopy[j] = k;
     }
     for (let i = 0; i < 3; i++) {
-        dizi[i] = diziKopya[i];
+        array[i] = arrayCopy[i];
     }
-    return dizi;
+    return array;
 }
 
-function butonTikla() {
-    if (baslayabilir == false) {
-        bittiMi = false;
-        if (!bittiMi) {
+function clickToButton() {
+    if (canStart == false) {
+        hasEnded = false;
+        if (!hasEnded) {
 
-            let sahipMi = false;
-            let dizi = [...rastgeleIndex([])];
-            for (let i = 0; i < dizi.length; i++) {
-                if (this.id == dizi[i].id) sahipMi = true;
+            let ownsIt = false;
+            let array = [...randomIndex([])];
+            for (let i = 0; i < array.length; i++) {
+                if (this.id == array[i].id) ownsIt = true;
             }
 
 
-            if (sahipMi) {
+            if (ownsIt) {
                 this.style.backgroundColor = 'red'
-                bittiMi = true;
-                baslayabilir = true;
+                hasEnded = true;
+                canStart = true;
             }
             else this.style.backgroundColor = 'green';
 
 
-            if (deneme === 9) {
-                bittiMi = true;
+            if (tries === 9) {
+                hasEnded = true;
             }
-            else deneme++;
+            else tries++;
 
         }
     }
@@ -65,48 +65,47 @@ function butonTikla() {
 
 
 function clear() {
-    for (let i = 0; i < butonListesi.length; i++) {
-        butonListesi[i].style.backgroundColor = "initial";
+    for (let i = 0; i < buttonList.length; i++) {
+        buttonList[i].style.backgroundColor = "initial";
     }
-    bahisDegeri.value = "";
+    betValue.value = "";
 }
 
-baslamaButonu.addEventListener("click", () => {
+startButton.addEventListener("click", () => {
 
-    if (baslayabilir) {
-        bahisDegeriInt = parseInt(bahisDegeri.value);
-        if (anlikPara >= bahisDegeriInt) {
-            
-            bahisDegeriInt = parseInt(bahisDegeri.value);
-            baslayabilir = false;
-            anlikPara -= bahisDegeriInt;
-            anlikBakiyeSpan.innerText = `${anlikPara}`
+    if (canStart) {
+        betValueSpanInt = parseInt(betValue.value);
+        if (currentCurrency >= betValueSpanInt) {
+            betValueSpanInt = parseInt(betValue.value);
+            canStart = false;
+            currentCurrency -= betValueSpanInt;
+            currentCurrencySpan.innerText = `${currentCurrency}`
             clear();
-            alert("Oyuna başlamış bulunuyorsunuz");
-        }else {
-            alert("Bakiyeniz yeterli değil");
+            alert("You have started to the game!");
+        } else {
+            alert("Your currency is not enough");
         }
 
     } else {
-        alert("Şu anda oyun zaten oynanıyor!");
+        alert("Game is already being played!");
     }
 });
 
 
-bitirmeButonu.addEventListener("click", () => {
-    if (!baslayabilir) {
-        bittiMi = true;
-        let sayi = 0;
-        for (let i = 0; i < butonListesi.length; i++) {
-            if (butonListesi[i].style.backgroundColor == "green")
-                sayi++;
+endButton.addEventListener("click", () => {
+    if (!canStart) {
+        hasEnded = true;
+        let num = 0;
+        for (let i = 0; i < buttonList.length; i++) {
+            if (buttonList[i].style.backgroundColor == "green")
+                num++;
         }
-        anlikPara = anlikPara + bahisDegeriInt + (sayi * (bahisDegeriInt * 1.2));
-        anlikBakiyeSpan.innerText = anlikPara;
-        baslayabilir = true;
+        currentCurrency = currentCurrency + betValueSpanInt + (num * (betValueSpanInt * 1.2));
+        currentCurrencySpan.innerText = currentCurrency;
+        canStart = true;
         clear();
     } else {
-        console.log("Henüz oyun başlamadı...")
+        console.log("Game has not started yet...")
     }
 });
 
